@@ -7,140 +7,172 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Portal Website</title>
     <link rel="stylesheet" href="../assets/style.css">
-<!--ICONS-->
+    <!-- ICONS -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-<!--FONTS (MONTSERRAT)-->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Urbanist:wght@100&family=Zen+Kaku+Gothic+Antique&display=swap">
+    <!-- FONTS (MONTSERRAT) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Urbanist:wght@100&family=Zen+Kaku+Gothic+Antique&display=swap">
 </head>
 
-
-<!--====================NAV===================================-->
-
 <body>
-  <nav>
-    <div class="container nav__container">
-<a href="/index.html" class="nav__logo">News Portal 25</a>
-<ul class="nav__items">
-  <li><a href="../blog.html">Blog</a></li>
-  <li><a href="../about.html">About</a></li>
-  <li><a href="../categories.html">Categories</a></li>
-  <li><a href="../contact.html">Contact</a></li>
-<!-- <li><a href="signin.html">Signin</a></li> -->
-<li class="nav__profile">
-<div class="avatar">
-<img src="../assets/images/avatar1.jpg">
-</div>
-<ul>
-<li><a href="dashboard.html">Dashboard</a></li>
-</ul>
-</li>
-</ul>
-<button id="open__nav-btn"><i class="uil uil-bars"></i></button>
-<button id="close__nav-btn"><i class="uil uil-multiply"></i></button>
-</div>
-</nav>
-<!--====================END OF NAV===================================-->
+    <nav>
+        <div class="container nav__container">
+            <a href="/index.html" class="nav__logo">News Portal 25</a>
+            <ul class="nav__items">
+                <li><a href="../blog.html">Blog</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../categories.html">Categories</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+                <li class="nav__profile">
+                    <div class="avatar">
+                        <img src="../assets/images/avatar1.jpg">
+                    </div>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button id="open__nav-btn"><i class="uil uil-bars"></i></button>
+            <button id="close__nav-btn"><i class="uil uil-multiply"></i></button>
+        </div>
+    </nav>
 
+    <section class="form__section-sign">
+        <div class="container form__section-container">
+            <h2>Add Post</h2>
+            <!-- <div class="alert__message error">
+                <p>This is an error message</p>
+            </div> -->
+            <form action="http://localhost:5500/news/create" method="POST" class="postnews" >
+                <input name="title" type="text" placeholder="Title" id="title">
+                <select name="category" id="category">
+                    <option value="Art">Art</option>
+                    <option value="Wild Life">Wild Life</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Science and Tech">Science and Tech</option>
+                    <option value="Food">Food</option>
+                    <option value="Music">Music</option>
+                </select>
+                <textarea name="body" id="body" rows="10" placeholder="Body"></textarea>
+                <div class="form__control">
+                  <label>Add Thumbnail</label>
+                  <input name="gambar" id="gambar" type="file" id="thumbnail">
+                </div>
+                <!-- <label >Pilih Tanggal:</label>
+                <input type="date" id="datenews" name="datenews" > -->
+                
+                <button type="submit" name="submit" id="submit" class="btn">Add Post</button>
+            </form>
+        </div>
+    </section>
 
-<section class="form__section-sign">
-<div class="container form__section-container">
-    <h2>Add Post</h2>
-    <!-- <div class="alert__message error">
-        <p>This is an error message</p>
-    </div> -->
-<form action="" enctype="multipart/form-data">
-    <input type="text" placeholder="Title">
-    <select>
-        <option value="1">Art</option>
-        <option value="1">Wild Life</option>
-        <option value="1">Travel</option>
-        <option value="1">Science and Tech</option>
-        <option value="1">Food</option>
-        <option value="1">Music</option>
-
-    </select>
-    
-    <textarea rows="10" placeholder="Body"></textarea>
-    <div class="form__control inline">
-        <input type="checkbox" id="is__featured" checked>
-        <label for="is__featured">Featured</label>
-    </div>
-<div class="form__control">
-    <label for="thumbnail">Add Thumbnail</label>
-    <input type="file" id="thumbnail">
-</div>
-
-<button type="submit" class="btn">Add Post</button>
-
-</form>
-</div>
-</section>
-
-<!--====================END OF FORM===================================-->
-
-
-<footer>
-  <div class="footer__socials">
-    <a href="https://youtube.com" target="_blank"
-      ><i class="uil uil-youtube"></i>
-      <a href="https://facebook.com" target="_blank"
-      ><i class="uil uil-facebook-f"></i>
-      <a href="https://instagram.com" target="_blank"
-      ><i class="uil uil-instagram-alt"></i>
-      <a href="https://linkedin.com" target="_blank"
-      ><i class="uil uil-linkedin"></i>
-      <a href="https://twitter.com" target="_blank"
-      ><i class="uil uil-twitter"></i>
-    </a>
-  </div>
-  <div class="container footer__container">
-    <article>
-      <h4> Categories</h4>
-      <ul>
-        <li><a href="../art.html">Art</a></li>
-        <li><a href="../wildlife.html">Wild Life</a></li>
-        <li><a href="../travel.html">Travel</a></li>
-        <li><a href="../tec.html">Science & Technology</a></li>
-        <li><a href="../food.html">Food</a></li>
-        <li><a href="../music.html">Music</a></li>
-      </ul>
-    </article>
-    <article>
-      <h4>Support</h4>
-        <ul>
-          <li><a href="tel:085810808990">Call Numbers</a></li>
-          <li><a href="mailto:hanasucianindageofani@gmail.com">Emails</a></li>
-          <li><a href="https://www.google.com/maps?q=lokasi">Location</a></li>
-        </ul>
-      </article>
+    <footer>
+      <div class="footer__socials">
+        <a href="https://youtube.com" target="_blank"
+          ><i class="uil uil-youtube"></i>
+          <a href="https://facebook.com" target="_blank"
+          ><i class="uil uil-facebook-f"></i>
+          <a href="https://instagram.com" target="_blank"
+          ><i class="uil uil-instagram-alt"></i>
+          <a href="https://linkedin.com" target="_blank"
+          ><i class="uil uil-linkedin"></i>
+          <a href="https://twitter.com" target="_blank"
+          ><i class="uil uil-twitter"></i>
+        </a>
+      </div>
+      <div class="container footer__container">
+        <article>
+          <h4> Categories</h4>
+          <ul>
+            <li><a href="../art.html">Art</a></li>
+            <li><a href="../wildlife.html">Wild Life</a></li>
+            <li><a href="../travel.html">Travel</a></li>
+            <li><a href="../tec.html">Science & Technology</a></li>
+            <li><a href="../food.html">Food</a></li>
+            <li><a href="../music.html">Music</a></li>
+          </ul>
+        </article>
+        <article>
+          <h4>Support</h4>
+            <ul>
+              <li><a href="tel:085810808990">Call Numbers</a></li>
+              <li><a href="mailto:hanasucianindageofani@gmail.com">Emails</a></li>
+              <li><a href="https://www.google.com/maps?q=lokasi">Location</a></li>
+            </ul>
+          </article>
+          <article>
+            <h4>Social Media Team</h4>
+            <ul>
+              <li><a href="https://instagram.com/amdfzy">Fauzy</a></li>
+              <li><a href="https://instagram.com/hanageofani">Hana</a></li>
+              <li><a href="https://instagram.com/khofkhof_fah">Fifah</a></li>
+              <li><a href="https://instagram.com/usmanut09">Usman</a></li>
+              <li><a href="https://instagram.com/st.nrrhlizaoct_">Liza</a></li>
+              <li><a href="https://instagram.com/mrzarmlta">Meriza</a></li>
+            </ul>
+          </article>
       <article>
-        <h4>Social Media Team</h4>
-        <ul>
-          <li><a href="https://instagram.com/amdfzy">Fauzy</a></li>
-          <li><a href="https://instagram.com/hanageofani">Hana</a></li>
-          <li><a href="https://instagram.com/khofkhof_fah">Fifah</a></li>
-          <li><a href="https://instagram.com/usmanut09">Usman</a></li>
-          <li><a href="https://instagram.com/st.nrrhlizaoct_">Liza</a></li>
-          <li><a href="https://instagram.com/mrzarmlta">Meriza</a></li>
-        </ul>
-      </article>
-  <article>
-    <h4>Permalinks </h4>
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../blog.html">Blog</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li><a href="../categories.html">Categories</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
-    </article>
-   
-    </div>
-    <div class="footer__copyright">
-      <small>  Copyright &copf; Group25-Surabaya </small>
-  </div>
-</footer>
+        <h4>Permalinks </h4>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../categories.html">Categories</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </article>
+       
+        </div>
+        <div class="footer__copyright">
+          <small>  Copyright &copf; Group25-Surabaya </small>
+      </div>
+        
+    </footer>
 
-<script src="../assets/main.js"> </script>
+    <script src="../assets/main.js"> 
+    document.querySelector('.postnews').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+
+        fetch(this.action, {
+            method: this.method,
+            body: formData  // Remove the 'Content-Type' header
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            // Handle the response here (e.g., display a success message, clear the form, etc.).
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            // Handle errors here (e.g., display an error message).
+        });
+    });
+
+      // document.querySelector('.postnews').addEventListener('submit', function(event) {
+      //   event.preventDefault();
+
+      //   const newsform = new newsform(this);
+
+      //   fetch(this.action, {
+      //       method: this.method,
+      //       headers: {
+      //           'Content-Type': 'application/json'
+      //       },
+      //       body: JSON.stringify(Object.fromEntries(newsform))
+      //   })
+      //   .then(response => response.json())
+      //   .then(data => {
+      //       console.log('Success:', data);
+      //       // Handle the response here (e.g., display a success message, clear the form, etc.).
+      //   })
+      //   .catch((error) => {
+      //       console.error('Error:', error);
+      //       // Handle errors here (e.g., display an error message).
+      //   });
+      // });
+
+      
+    </script>
 </body>
 </html>

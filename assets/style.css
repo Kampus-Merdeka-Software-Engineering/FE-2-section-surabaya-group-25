@@ -338,7 +338,7 @@ footer ul a:hover {
 .search__bar-container {
   position: relative;
   width: 30rem;
-  background: #515689;
+  background: #dfdfdf;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -779,7 +779,7 @@ main {
   text-align: center;
 }
 
-.form-contact {
+.contactForm {
   display: flex;
   flex-direction: column;
   width: 60%;
@@ -792,8 +792,8 @@ main {
   padding: 1% 0;
 }
 
-.form-contact input, 
-.form-contact textarea {
+.contactForm input, 
+.contactForm textarea {
   color: #333; /* Darken text color for better readability */
   width: 100%;
   background-color: #fff; /* Set a white background color */
@@ -802,19 +802,19 @@ main {
   font-size: 20px;
 }
 
-.form-contact input:focus, 
-.form-contact textarea:focus {
+.contactForm input:focus, 
+.contactForm textarea:focus {
   background-color: #f9f9f9; /* Lighten background color on focus */
   outline: transparent;
   border-bottom: 2px solid #69f0ae;
 }
 
-.form-contact input::placeholder, 
-.form-contact textarea::placeholder {
+.contactForm input::placeholder, 
+.contactForm textarea::placeholder {
   color: #999; /* Adjust placeholder text color */
 }
 
-.form-contact label {
+.contactForm label {
   color: #555; /* Darken label text color */
   position: relative;
   left: 0.5em;
@@ -823,10 +823,10 @@ main {
   transition: 0.3s ease all;
 }
 
-.form-contact input:focus ~ label, 
-.form-contact input:not(:placeholder-shown) ~ label,
-.form-contact textarea:focus ~ label, 
-.form-contact textarea:not(:placeholder-shown) ~ label {
+.contactForm input:focus ~ label, 
+.contactForm input:not(:placeholder-shown) ~ label,
+.contactForm textarea:focus ~ label, 
+.contactForm textarea:not(:placeholder-shown) ~ label {
   top: -4em;
   color: #69f0ae;
   font-size: 15px;
@@ -837,7 +837,7 @@ main {
   justify-content: center;
 }
 
-.form-contact button {
+.contactForm button {
   padding: 2%;
   width: 30%;
   border: 1px solid #212121;
@@ -849,7 +849,7 @@ main {
   box-shadow: 0 0 10px #212121;
 }
 
-.form-contact button:hover {
+.contactForm button:hover {
   background-color: #00ced1;
   color: #000000;
   cursor: pointer;
@@ -859,7 +859,7 @@ main {
 
 @media screen and (max-width: 1200px)
 {
-    .form-contact
+    .contactForm
     {
         width: 70%;
     }
@@ -867,7 +867,7 @@ main {
 
 @media screen and (max-width: 680px)
 {
-    .form-contact
+    .contactForm
     {
 		width: 90%;
     }
@@ -889,6 +889,7 @@ main {
 	.form-contact
 	{
 		padding: 6% 4%;
+
 		padding-top: 15%;
 	}
 
@@ -925,7 +926,7 @@ main {
 
 @media screen and (max-width: 1200px)
 {
-    .form-contact
+    .contactForm
     {
         width: 70%;
     }
@@ -933,7 +934,7 @@ main {
 
 @media screen and (max-width: 680px)
 {
-    .form-contact
+    .contactForm
     {
 		width: 90%;
     }
@@ -952,7 +953,7 @@ main {
 		font-size: 13px;
 	}
 	
-	.form-contact
+	.contactForm
 	{
 		padding: 6% 4%;
 		padding-top: 15%;
@@ -1144,7 +1145,6 @@ align-items: center;
 }
 /*sign end*/
 
-
 .dashboard {
   margin-top: 6rem;
 }
@@ -1153,37 +1153,36 @@ align-items: center;
   display: grid;
   grid-template-columns: 14rem auto;
   gap: 1rem;
-  background: var(--color-gray-900);
+  background: rgba(0, 0, 0, 0.5); /* Adjust the transparency as needed */
   padding: 2rem;
   margin-bottom: 5rem;
+  color: white; /* Text color */
 }
 
 .dashboard aside a {
-  background: #6697a7;
+  background: #838383; /* White background */
   display: flex;
   gap: 1rem;
   align-items: center;
   padding: 1.6rem;
+  color: black; /* Text color */
 }
 
 .dashboard aside ul li:not(:last-child) a {
-  border-bottom: 1px solid var(--color-gray-900);
-
-
+  border-bottom: 1px solid black; /* Border color */
 }
 
 .dashboard aside a:hover {
-  background: var(--color-gray-700);
+  background: #b2b2b3; /* Light gray on hover */
 }
 
 .dashboard aside a.active {
-  background: var(--color-gray-900);
+  background: black; /* Black for active item */
+  color: rgb(151, 151, 151); /* Text color */
 }
-
 
 .dashboard main {
   margin-left: 1.5rem;
-
 }
 
 .dashboard main h2 {
@@ -1197,19 +1196,19 @@ align-items: center;
 }
 
 .dashboard main table th {
-  background: var(--color-gray-700);
+  background: #333; /* Dark gray background for table headers */
   padding: 0.8rem;
-  color: var(--color-white);
+  color: white;
 }
 
-.dashboard main table td {  
+.dashboard main table td {
   padding: 0.8rem;
-  border-bottom: 1px solid var(--color-gray-200);
+  border-bottom: 1px solid #ccc; /* Light gray border */
 }
 
 .dashboard main table tr:hover td {
-  background: var(--color-bg);
-  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.2); /* White with transparency on hover */
+  color: white;
   cursor: default;
   transition: var(--transition);
 }
@@ -1217,6 +1216,7 @@ align-items: center;
 .sidebar__toggle {
   display: none;
 }
+
 
 /*General Form*/
 .form__section {
@@ -1309,14 +1309,84 @@ input, textarea, select {
 
 /*===============================CATEGORY POSTS======================================*/
 
-
-.category__title {
-  height: 15rem;
-  margin-top: 4.5rem;
-  background-color: var(--color-gray-900);
-  display: grid;
-  place-items: center;
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-/*==============================*/
 
+/* Container Styling */
+.posts__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Center the posts horizontally */
+}
 
+/* News Article Styling */
+.post {
+  width: 100%;
+  max-width: 320px;
+  background-color: rgba(255, 255, 255, 0.7); /* Use rgba for transparency */
+  border: 1px solid #777272;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(199, 188, 188, 0.1);
+  margin-bottom: 20px; /* Add some space between posts */
+}
+
+/* Thumbnail Styling */
+.post__thumbnail img {
+  width: 100%;
+  height: auto;
+}
+
+/* Info Styling */
+.post_info {
+  padding: 20px;
+}
+
+.category__button {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  background-color: #3498db;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.post__title a {
+  color: #333;
+  text-decoration: none;
+}
+
+.post__body {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* Author Styling */
+.post__author {
+  display: flex;
+  align-items: center;
+}
+
+.post__author-avatar img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post__author-info h5 {
+  margin: 0;
+  font-size: 14px;
+  color: #999;
+}
+
+.post__author-info small {
+  color: #999;
+  font-size: 12px;
+}

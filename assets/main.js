@@ -1,4 +1,3 @@
-
 const navItems = document.querySelector('.nav__items');
 const openNavBtn = document.querySelector('#open__nav-btn');
 const closeNavBtn = document.querySelector('#close__nav-btn');
@@ -19,25 +18,123 @@ const closeNav = () => {
 
 openNavBtn.addEventListener('click', openNav);
 closeNavBtn.addEventListener('click', closeNav);
+  // JavaScript untuk melakukan permintaan GET dan menampilkan data berita
+  document.addEventListener('DOMContentLoaded', async function () {
+  try {
+    const response = await fetch('http://localhost:5500/news/get');
+    const newsData = await response.json();
+    console.log(newsData);
 
-function deleteCategory(element) {
-  if (confirm("Are you sure you want to delete this file?")) {
-      var row = element.parentNode.parentNode;
-      row.parentNode.removeChild(row);
-      setTimeout(function() {
-          console.log('Category deleted successfully!');  
-      }, 500); 
+    const newsContainer = document.getElementById('newsContainer');
+    // Mengosongkan container sebelum menambahkan data berita baru
+    newsContainer.innerHTML = '';
+
+    // Menambahkan data berita ke dalam container
+    newsData.forEach(newsItem => {
+      const newsElement = document.createElement('article');
+      newsElement.classList.add('post');
+
+      newsElement.innerHTML = `
+        <div class="post__thumbnail">
+          <img src="${newsItem.gambar}" >
+        </div>
+        <div class="post_info">
+          <a href="" class="category__button">${newsItem.category}</a>
+          <h3 class="post__title">
+            <a>${newsItem.title}</a>
+          </h3>
+          <p class="post__body">${newsItem.body}</p>
+          <div class="post__author">
+            <div class="post__author-avatar">
+              <img src="./assets/images/avatar3.jpg" alt="Author Avatar">
+            </div>
+            <div class="post__author-info">
+              <h5>By: admin</h5>
+              <small>${newsItem.datenews}</small>
+            </div>
+          </div>
+        </div>
+      `;
+
+      newsContainer.appendChild(newsElement);
+    });
+
+  } catch (error) {
+    console.error('Error fetching news:', error);
   }
-}
+});
 
-function logout() {
-  if (confirm("Are you sure you want to log out?")) {
-      localStorage.removeItem('authToken');
+
+// function logout() {
+//   if (confirm("Are you sure you want to log out?")) {
+//       localStorage.removeItem('authToken');
       
-      window.location.href = 'signin.html'; 
+//       window.location.href = 'signin.html'; 
+//   }
+// }
+
+document.addEventListener('DOMContentLoaded', async function () {
+  try {
+    const response = await fetch('http://localhost:5500/news/get');
+    const newsData = await response.json();
+
+    const newsTableBody = document.getElementById('newsTableBody');
+
+    // Loop through the news data and create table rows
+    newsData.forEach(newsItem => {
+      const newRow = document.createElement('tr');
+
+      // Add the data-id attribute to identify each row
+      newRow.setAttribute('data-id', newsItem.id);
+
+      // Fill in the table cells with news data
+      newRow.innerHTML = `
+        <td>${newsItem.title}</td>
+        <td>${newsItem.category}</td>
+        <td><a href="edit-post.html" class="btn sm edit-btn" data-id="${newsItem.id}">Edit</a></td>
+        <td>
+          <a href="#" class="btn danger" onclick="deleteNews('${newsItem.id}')">Delete</a>
+        </td>
+      `;
+
+      // Append the new row to the table body
+      newsTableBody.appendChild(newRow);
+    });
+
+  } catch (error) {
+    console.error('Error fetching news:', error);
+  }
+});
+
+
+// ...
+
+
+// ...
+// Function to delete news by ID
+async function deleteNews(newsId) {
+  try {
+    const response = await fetch(`http://localhost:5500/news/delete/${newsId}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      // Remove the corresponding row from the table on successful deletion
+      const rowToDelete = document.querySelector(`[data-id="${newsId}"]`);
+      if (rowToDelete) {
+        rowToDelete.remove();
+      } else {
+        console.error('Row not found for deletion:', newsId);
+      }
+    } else {
+      console.error('Error deleting news:', response.statusText);
+    }
+  } catch (error) {
+    console.error('Error deleting news:', error);
   }
 }
 
+//editpost
 
 /*footer*/
 // const popularLink = document.getElementById('popularLink');
