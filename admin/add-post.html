@@ -42,8 +42,8 @@
             <!-- <div class="alert__message error">
                 <p>This is an error message</p>
             </div> -->
-            <form action="http://localhost:5500/news/create" method="POST" class="postnews" >
-                <input name="title" type="text" placeholder="Title" id="title">
+            <form action="http://localhost:5500/news/create" method="POST" class="postnews" enctype="multipart/form-data">
+              <input name="title" type="text" placeholder="Title" id="title">
                 <select name="category" id="category">
                     <option value="Art">Art</option>
                     <option value="Wild Life">Wild Life</option>
@@ -52,7 +52,9 @@
                     <option value="Food">Food</option>
                     <option value="Music">Music</option>
                 </select>
-                <textarea name="body" id="body" rows="10" placeholder="Body"></textarea>
+                <textarea name="introbody" id="introbody" rows="6" placeholder="Body Cover"></textarea>
+                <textarea name="body" id="body" rows="6" placeholder="Body Cover"></textarea>
+                <!-- <textarea name="detail" id="detail" placeholder="Detaile berita"></textarea> -->
                 <div class="form__control">
                   <label>Add Thumbnail</label>
                   <input name="gambar" id="gambar" type="file" id="thumbnail">
@@ -129,14 +131,15 @@
     </footer>
 
     <script src="../assets/main.js"> 
-    document.querySelector('.postnews').addEventListener('submit', function(event) {
+ 
+    document.querySelector('.postnews').addEventListener('submit', function (event) {
         event.preventDefault();
 
         const formData = new FormData(this);
 
         fetch(this.action, {
             method: this.method,
-            body: formData  // Remove the 'Content-Type' header
+            body: formData
         })
         .then(response => response.json())
         .then(data => {
@@ -148,6 +151,7 @@
             // Handle errors here (e.g., display an error message).
         });
     });
+</script>
 
       // document.querySelector('.postnews').addEventListener('submit', function(event) {
       //   event.preventDefault();
@@ -173,6 +177,5 @@
       // });
 
       
-    </script>
 </body>
 </html>

@@ -48,3 +48,111 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 </div>
               </section>
+
+
+// ...
+document.addEventListener('DOMContentLoaded', function () {
+    try {
+        const newsContainer = document.getElementById('newsContainer');
+
+        if (!newsContainer) {
+            console.error('Error: News container not found.');
+            return;
+        }
+
+        newsData.forEach(newsItem => {
+            const newsElement = document.createElement('article');
+            newsElement.classList.add('post');
+
+            // Extract the filename from the full path
+            const fileName = newsItem.gambar.split('/').pop();
+
+            // Encode the spaces in the filename
+            const encodedFileName = encodeURIComponent(fileName);
+
+            // Construct the image URL
+            const imageUrl = `http://localhost:5500/images/${encodedFileName}`;
+
+            newsElement.innerHTML = `
+                <div class="post__thumbnail">
+                    <img src="${imageUrl}" alt="News Thumbnail">
+                </div>
+                <div class="post_info">
+                    <a href="" class="category__button">${newsItem.category}</a>
+                    <h3 class="post__title">
+                        <a>${newsItem.title}</a>
+                    </h3>
+                    <p class="post__body">${newsItem.body}</p>
+                    <div class="post__author">
+                        <div class="post__author-avatar">
+                            <img src="./assets/images/avatar3.jpg" alt="Author Avatar">
+                        </div>
+                        <div class="post__author-info">
+                            <h5>By: admin</h5>
+                            <small>${newsItem.datenews}</small>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            newsContainer.appendChild(newsElement);
+        });
+    } catch (error) {
+        console.error('Error fetching and displaying news:', error);
+    }
+});
+// ...
+
+
+document.addEventListener('DOMContentLoaded', async function () {
+      try {
+        // Extract the news ID from the URL query parameter
+        const queryParams = new URLSearchParams(window.location.search);
+        const targetNewsId = queryParams.get('id');
+
+        const response = await fetch('http://localhost:5500/news/get');
+        const newsData = await response.json();
+        console.log(newsData);
+
+        const newsContainer = document.getElementById('newsContainer');
+        // Mengosongkan container sebelum menambahkan data berita baru
+        newsContainer.innerHTML = '';
+
+        // Find the news item with the specified ID
+        const targetNewsItem = newsData.find(newsItem => newsItem.id == targetNewsId);
+
+        // Check if the news item is found
+        if (targetNewsItem) {
+          const newsElement = document.createElement('article');
+          newsElement.classList.add('post');
+          newsElement.innerHTML = `
+            <div class="post__thumbnail">
+              <img src="${targetNewsItem.gambar}" alt="News Thumbnail">
+            </div>
+            <div class="post_info">
+              <a href="#" class="category__button" data-category="${targetNewsItem.category}">
+                ${targetNewsItem.category}
+              </a>
+              <h3 class="post__title">
+                <a href="#" data-news-id="${targetNewsItem.id}" class="news-title">${targetNewsItem.title}</a>
+              </h3>
+              <p class="post__body">${targetNewsItem.body}</p>
+              <div class="post__author">
+                <div class="post__author-avatar">
+                  <img src="./assets/images/avatar3.jpg" alt="Author Avatar">
+                </div>
+                <div class="post__author-info">
+                  <h5>By: admin</h5>
+                  <small>${targetNewsItem.datenews}</small>
+                </div>
+              </div>
+            </div>`;
+
+          newsContainer.appendChild(newsElement);
+        } else {
+          console.error('News with specified ID not found.');
+        }
+      } catch (error) {
+        console.error('Error fetching news:', error);
+      }
+    });
