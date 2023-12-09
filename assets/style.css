@@ -1320,14 +1320,14 @@ input, textarea, select {
 .posts__container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 40px;
   justify-content: center; /* Center the posts horizontally */
 }
 
 /* News Article Styling */
 .post {
   width: 100%;
-  max-width: 320px;
+  max-width: 360px;
   background-color: rgba(255, 255, 255, 0.7); /* Use rgba for transparency */
   border: 1px solid #777272;
   border-radius: 8px;
@@ -1389,4 +1389,85 @@ input, textarea, select {
 .post__author-info small {
   color: #999;
   font-size: 12px;
+}
+
+body, h1, h2, h3,h5 ,p, img {
+  
+  
+  margin: 0;
+  padding: 0;
+  color: #555;
+}
+
+/* Apply a box-sizing border-box model to all elements */
+* {
+  box-sizing: border-box;
+}
+
+/* Style for the section containing the single post */
+
+/* Style for the container within the single post section */
+.singlepost__container {
+  max-width: 800px;
+  margin: 0 auto; /* Ini sudah membuat kontennya berada di tengah secara horizontal */
+  text-align: center; /* Menambah properti untuk membuat kontennya berada di tengah secara vertical */
+}
+
+/* Style for the post element */
+.post {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 0 auto 20px; /* Menggunakan margin auto pada kiri dan kanan untuk membuat kontennya berada di tengah secara horizontal */
+}
+
+/* Style for the post author information */
+.post__author {
+  display: flex;
+  flex-direction: column; /* Menambah properti untuk mengatur tata letak kolom */
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.post__author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 10px; /* Menyesuaikan margin */
+  color: #333;
+
+}
+
+.post__author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post__author_info h5,
+.post__author_info small {
+  margin: 0;
+}
+
+/* Style for the single post thumbnail image */
+.singlepost__thumbnail img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Style for the paragraphs within the post body */
+.post p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Add media queries for responsiveness */
+@media only screen and (max-width: 600px) {
+  .singlepost__container {
+    padding: 0 10px;
+  }
 }

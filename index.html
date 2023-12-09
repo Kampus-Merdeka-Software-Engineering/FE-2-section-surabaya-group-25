@@ -94,16 +94,16 @@
 
     <!-- ======================  END OF POSTS  ==================== -->
 
-    <section class="category__buttons">
-      <div class="container category__buttons-container">
-        <a href="art.html" class="category__button">Art</a>
-        <a href="wildlife.html" class="category__button">Wild Life</a>
-        <a href="travel.html" class="category__button">Travel</a>
-        <a href="tec.html" class="category__button">Science & Technology</a>
-        <a href="food.html" class="category__button">Food</a>
-        <a href="music.html" class="category__button">Music</a>
-      </div>
+    <section class="search__bar">
+      <form class="container search__bar-container" onsubmit="searchNews(event)">
+        <div>
+          <i class="uil uil-search"> </i>
+          <input type="search" name="searchInput" id="searchInput" placeholder="Search by Category">
+        </div>
+        <button type="submit" class="btn">Go</button>
+      </form>
     </section>
+    
 
     <!-- ======================  END OF CATEGORY BUTTONS  ==================== -->
 

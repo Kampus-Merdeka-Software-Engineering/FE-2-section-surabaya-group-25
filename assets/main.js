@@ -140,4 +140,51 @@ async function deleteNews(newsId) {
 }
 
 
+async function searchNews(event) {
+  event.preventDefault();
+
+  const searchInput = document.getElementById('searchInput').value;
+
+  try {
+    const response = await fetch(`http://localhost:5500/news/getcategory?category=${searchInput}`);
+    const newsData = await response.json();
+    console.log('Fetched news data:', newsData);
+
+    const newsContainer = document.getElementById('newsContainer');
+    // Clear container before adding new news
+    newsContainer.innerHTML = '';
+
+    // Display each news item in the container
+    newsData.forEach(targetNewsItem => {
+      const newsElement = document.createElement('article');
+      newsElement.classList.add('post');
+      newsElement.innerHTML = `
+        <div class="post__thumbnail">
+          <img src="${targetNewsItem.gambar}" alt="News Thumbnail">
+        </div>
+        <div class="post_info">
+          <a href="#" class="category__button" data-category="${targetNewsItem.category}">
+            ${targetNewsItem.category}
+          </a>
+          <h3 class="post__title">
+            <a href="#" data-news-id="${targetNewsItem.id}" class="news-title">${targetNewsItem.title}</a>
+          </h3>
+          <p class="post__body">${targetNewsItem.body}</p>
+          <div class="post__author">
+            <div class="post__author-avatar">
+              <img src="./assets/images/avatar3.jpg" alt="Author Avatar">
+            </div>
+            <div class="post__author-info">
+              <h5>By: admin</h5>
+              <small>${targetNewsItem.datenews}</small>
+            </div>
+          </div>
+        </div>`;
+
+      newsContainer.appendChild(newsElement);
+    });
+  } catch (error) {
+    console.error('Error fetching news:', error);
+  }
+}
   
