@@ -141,7 +141,7 @@ document.querySelectorAll('.edit-btn').forEach(editBtn => {
     event.preventDefault();
     const newsId = this.dataset.id;
     try {
-      const response = await fetch(`be-2-section-surabaya-group-25-production.up.railway.app/news/get/${newsId}`);
+      const response = await fetch(`https://be-2-section-surabaya-group-25-production.up.railway.app/news/get/${newsId}`);
       const newsDetails = await response.json();
       // Fill the form with news details
       document.getElementById('title').value = newsDetails.title;
