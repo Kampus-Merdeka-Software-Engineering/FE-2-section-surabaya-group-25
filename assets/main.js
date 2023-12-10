@@ -31,11 +31,13 @@ closeNavBtn.addEventListener('click', closeNav);
   
       // Menambahkan data berita ke dalam container
       newsData.forEach(newsItem => {
+        const imageUrl = `http://localhost:5500/public/images/${newsItem.gambar}`;
+        console.log('Image URL:', imageUrl);
         const newsElement = document.createElement('article');
         newsElement.classList.add('post');
         newsElement.innerHTML = `
           <div class="post__thumbnail">
-            <img src="${newsItem.gambar}" alt="News Thumbnail">
+            <img src="${imageUrl}" alt="News Thumbnail">
           </div>
           <div class="post_info">
             <a href="#" class="category__button" data-category="${newsItem.category}">
@@ -59,6 +61,8 @@ closeNavBtn.addEventListener('click', closeNav);
         
         newsContainer.appendChild(newsElement);
       });
+      
+      
   
       // Add event listener for news titles
       const newsTitles = document.querySelectorAll('.news-title');
@@ -76,7 +80,7 @@ closeNavBtn.addEventListener('click', closeNav);
       console.error('Error fetching news:', error);
     }
   });
-  
+    
 
 document.addEventListener('DOMContentLoaded', async function () {
   try {
@@ -138,53 +142,35 @@ async function deleteNews(newsId) {
     console.error('Error deleting news:', error);
   }
 }
-
-
-async function searchNews(event) {
+function searchNewsByBodyImage(event) {
   event.preventDefault();
 
   const searchInput = document.getElementById('searchInput').value;
+  searchNews(searchInput);
+}
 
+async function searchNews(category) {
   try {
-    const response = await fetch(`http://localhost:5500/news/getcategory?category=${searchInput}`);
-    const newsData = await response.json();
-    console.log('Fetched news data:', newsData);
+    const response = await fetch(`http://localhost:5500/news//getcategory//${category}`);
 
-    const newsContainer = document.getElementById('newsContainer');
-    // Clear container before adding new news
-    newsContainer.innerHTML = '';
+    console.log('Network response:', response);
 
-    // Display each news item in the container
-    newsData.forEach(targetNewsItem => {
-      const newsElement = document.createElement('article');
-      newsElement.classList.add('post');
-      newsElement.innerHTML = `
-        <div class="post__thumbnail">
-          <img src="${targetNewsItem.gambar}" alt="News Thumbnail">
-        </div>
-        <div class="post_info">
-          <a href="#" class="category__button" data-category="${targetNewsItem.category}">
-            ${targetNewsItem.category}
-          </a>
-          <h3 class="post__title">
-            <a href="#" data-news-id="${targetNewsItem.id}" class="news-title">${targetNewsItem.title}</a>
-          </h3>
-          <p class="post__body">${targetNewsItem.body}</p>
-          <div class="post__author">
-            <div class="post__author-avatar">
-              <img src="./assets/images/avatar3.jpg" alt="Author Avatar">
-            </div>
-            <div class="post__author-info">
-              <h5>By: admin</h5>
-              <small>${targetNewsItem.datenews}</small>
-            </div>
-          </div>
-        </div>`;
+    if (!response.ok) {
+      console.error('Error: Network response was not ok. Status:', response.status);
+      return null;
+    }
 
-      newsContainer.appendChild(newsElement);
-    });
+    const data = await response.json();
+
+    if (data.length > 0) {
+      console.log('News articles found:', data);
+      return data;
+    } else {
+      console.log('News articles not found with the specified title');
+      return null;
+    }
   } catch (error) {
-    console.error('Error fetching news:', error);
+    console.error('Error during search:', error);
+    return null;
   }
 }
-  
