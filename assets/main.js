@@ -21,7 +21,7 @@ closeNavBtn.addEventListener('click', closeNav);
   // JavaScript untuk melakukan permintaan GET dan menampilkan data berita
   document.addEventListener('DOMContentLoaded', async function () {
     try {
-      const response = await fetch('http://localhost:5500/news/get');
+      const response = await fetch('be-2-section-surabaya-group-25-production.up.railway.app/news/get');
       const newsData = await response.json();
       console.log(newsData);
   
@@ -31,7 +31,7 @@ closeNavBtn.addEventListener('click', closeNav);
   
       // Menambahkan data berita ke dalam container
       newsData.forEach(newsItem => {
-        const imageUrl = `http://localhost:5500/public/images/${newsItem.gambar}`;
+        const imageUrl = `be-2-section-surabaya-group-25-production.up.railway.app/public/images/${newsItem.gambar}`;
         console.log('Image URL:', imageUrl);
         const newsElement = document.createElement('article');
         newsElement.classList.add('post');
@@ -84,7 +84,7 @@ closeNavBtn.addEventListener('click', closeNav);
 
 document.addEventListener('DOMContentLoaded', async function () {
   try {
-    const response = await fetch('http://localhost:5500/news/get');
+    const response = await fetch('be-2-section-surabaya-group-25-production.up.railway.app/news/get');
     const newsData = await response.json();
 
     const newsTableBody = document.getElementById('newsTableBody');
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 // Function to delete news by ID
 async function deleteNews(newsId) {
   try {
-    const response = await fetch(`http://localhost:5500/news/delete/${newsId}`, {
+    const response = await fetch(`be-2-section-surabaya-group-25-production.up.railway.app/news/delete/${newsId}`, {
       method: 'DELETE',
     });
 
@@ -151,7 +151,7 @@ function searchNewsByBodyImage(event) {
 
 async function searchNews(category) {
   try {
-    const response = await fetch(`http://localhost:5500/news//getcategory//${category}`);
+    const response = await fetch(`be-2-section-surabaya-group-25-production.up.railway.app/news/getcategory//${category}`);
 
     console.log('Network response:', response);
 
