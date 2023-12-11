@@ -22,7 +22,7 @@ closeNavBtn.addEventListener('click', closeNav);
   document.addEventListener('DOMContentLoaded', async function () {
     try {
       const response = await fetch('https://be-2-section-surabaya-group-25-production.up.railway.app/news/get');
-      const newsData = await response.json();
+      const newsData = await response.json(); 
       console.log(newsData);
   
       const newsContainer = document.getElementById('newsContainer');
