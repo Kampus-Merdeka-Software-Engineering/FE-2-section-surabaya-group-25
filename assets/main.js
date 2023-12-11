@@ -71,7 +71,7 @@ closeNavBtn.addEventListener('click', closeNav);
           event.preventDefault();
           const newsId = title.dataset.newsId;
           // Use the news ID information to construct the URL for the detailed post page
-          const postDetailURL = `../post.html?id=${encodeURIComponent(newsId)}`;
+          const postDetailURL = `../FE-2-section-surabaya-group-25/post.html?id=${encodeURIComponent(newsId)}`;
           window.location.href = postDetailURL;
         });
       });
